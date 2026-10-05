@@ -7,8 +7,13 @@ const connectDB= async()=>{
 
     if (connectionPromise) return connectionPromise
 
+    const uri = process.env.DB_URI
+    if (typeof uri !== "string" || uri.length === 0) {
+        throw new Error("DB_URI environment variable is required")
+    }
+
     connectionPromise = mongoose
-    .connect(process.env.DATABASE_URI)
+    .connect(uri)
     .then(()=>{
         console.log("Database connected successfully");
         
