@@ -1,4 +1,5 @@
 const express = require("express");
+const dns = require("dns");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const dns = require("dns");
@@ -9,6 +10,7 @@ const app = express();
 
 app.use(express.json());
 
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const UserRouter = require("./routes/user.routes");
 
