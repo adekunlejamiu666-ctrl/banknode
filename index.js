@@ -9,6 +9,7 @@ const app = express();
 
 app.use(express.json());
 
+
 const UserRouter = require("./routes/user.routes");
 
 
@@ -37,3 +38,7 @@ module.exports=async(req, res)=>{
 
   return app(req, res)
 }
+
+app.get("/", (req, res) =>{
+  res.send("welcome to the api");
+})
